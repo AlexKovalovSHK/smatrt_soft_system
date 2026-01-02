@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>Mizzle - Technology and Corporate Bootstrap Theme</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Technology and Corporate Bootstrap Theme">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+			var el = document.querySelector('.theme-icon-active');
+			if (el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+					const activeThemeIcon = document.querySelector('.theme-icon-active use')
+					const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+					const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+					document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+						element.classList.remove('active')
+					})
+
+					btnToActive.classList.add('active')
+					activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+				}
+
+				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+					if (storedTheme !== 'light' || storedTheme !== 'dark') {
+						setTheme(getPreferredTheme())
+					}
+				})
+
+				showActiveTheme(getPreferredTheme())
+
+				document.querySelectorAll('[data-bs-theme-value]')
+					.forEach(toggle => {
+						toggle.addEventListener('click', () => {
+							const theme = toggle.getAttribute('data-bs-theme-value')
+							localStorage.setItem('theme', theme)
+							setTheme(theme)
+							showActiveTheme(theme)
+						})
+					})
+
+			}
+		})
+
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+
+</head>
+
+<body>
+
+	<!-- Header START -->
+	<header class="header-sticky header-absolute" data-bs-theme="dark">
+		<!-- Logo Nav START -->
+		<nav class="navbar navbar-expand-xl px-lg-5">
+			<div class="container-fluid">
+				<!-- Logo START -->
+				<!-- Logo START -->
+				<a class="navbar-brand me-5 fw-bold text-white ibm-plex-mono-text" href="index.html">
+					Smart Soft System
+				</a>
+				<!-- Logo END -->
+
+				<!-- Main navbar START -->
+				<div class="navbar-collapse collapse" id="navbarCollapse">
+					<ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+
+						<!-- Nav item -->
+						<li class="nav-item"> <a class="nav-link" href="about-v2.html">About Us</a> </li>
+
+						<!-- Nav item -->
+						<li class="nav-item"> <a class="nav-link" href="#" data-bs-toggle="modal"
+								data-bs-target="#contactModal">Contact us</a> </li>
+
+						<!-- Nav item -->
+						<li class="nav-item"> <a class="nav-link" href="portfolio-list.html">Portfolio</a> </li>
+					</ul>
+				</div>
+				<!-- Main navbar END -->
+
+				<!-- Buttons -->
+				<ul class="nav align-items-center dropdown-hover ms-sm-2">
+					<!-- Dark mode option START -->
+					<li class="nav-item dropdown dropdown-animation">
+						<button class="btn btn-link mb-0 px-2 lh-1" id="bd-theme" type="button" aria-expanded="false"
+							data-bs-toggle="dropdown" data-bs-display="static">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+								class="bi bi-circle-half theme-icon-active fill-mode fa-fw" viewBox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+								<use href="#"></use>
+							</svg>
+						</button>
+
+						<ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
+							<li class="mb-1">
+								<button type="button" class="dropdown-item d-flex align-items-center"
+									data-bs-theme-value="light">
+									<svg width="16" height="16" fill="currentColor"
+										class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+										<path
+											d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+										<use href="#"></use>
+									</svg>Light
+								</button>
+							</li>
+							<li class="mb-1">
+								<button type="button" class="dropdown-item d-flex align-items-center"
+									data-bs-theme-value="dark">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+										class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+										<path
+											d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+										<path
+											d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+										<use href="#"></use>
+									</svg>Dark
+								</button>
+							</li>
+							<li>
+								<button type="button" class="dropdown-item d-flex align-items-center active"
+									data-bs-theme-value="auto">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+										class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+										<use href="#"></use>
+									</svg>Auto
+								</button>
+							</li>
+						</ul>
+					</li>
+					<!-- Dark mode option END -->
+
+					<!-- Search -->
+					<li class="nav nav-item dropdown nav-search px-1 px-lg-3">
+						<a class="btn btn-light border btn-round mb-0" role="button" href="#" id="navSearch"
+							data-bs-toggle="dropdown" aria-expanded="true" data-bs-auto-close="outside"
+							data-bs-display="static">
+							<i class="bi bi-search"> </i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch"
+							data-bs-popper="none">
+							<form class="input-group">
+								<input class="form-control border-primary" type="search" placeholder="Search..."
+									aria-label="Search">
+								<button class="btn btn-primary m-0" type="submit">Search</button>
+							</form>
+						</div>
+					</li>
+
+					<!-- Offcanvas cart menu -->
+					<li class="nav-item position-relative ms-2 ms-sm-3 d-none d-sm-block">
+						<a class="btn btn-dark mb-0" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">free
+							consultation</a>
+					</li>
+
+					<!-- Responsive navbar toggler -->
+					<li class="nav-item">
+						<button class="navbar-toggler ms-3 p-2" type="button" data-bs-toggle="collapse"
+							data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-animation">
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+						</button>
+					</li>
+				</ul>
+
+			</div>
+		</nav>
+		<!-- Logo Nav END -->
+	</header>
+	<!-- Header END -->
+
+	<!-- **************** MAIN CONTENT START **************** -->
+	<main>
+
+		<!-- =======================
+Main hero START -->
+		<section class="pt-lg-8">
+			<div class="container pt-4 pt-lg-0">
+				<!-- Breadcrumb & title -->
+				<div class="row align-items-center mb-7">
+					<div class="col-xl-6">
+						<!-- Breadcrumb -->
+						<div class="d-flex position-relative z-index-9">
+							<nav aria-label="breadcrumb">
+								<ol class="breadcrumb breadcrumb-dots mb-1">
+									<li class="breadcrumb-item"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Portfolio Showcase</li>
+								</ol>
+							</nav>
+						</div>
+						<!-- Title -->
+						<h1 class="display-5">Highlights of cases that we've built</h1>
+					</div>
+					<!-- Content -->
+					<div class="col-xl-5 ms-auto">
+						<p class="mb-4">The combination of my passion for design, code & interaction positions me in a
+							unique place in the web design world.</p>
+						<div class="text-center d-inline-block bg-light border rounded px-5 py-3">
+							<span class="heading-color">Work with us?</span> <a class="ms-2 cursor-pointer"
+								data-bs-toggle="modal" data-bs-target="#contactModal">Contact us now<span
+									class="bi-chevron-right small ms-1"></span></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Portfolio item START -->
+				<div class="card card-img-scale bg-transparent overflow-hidden mb-6 mb-xl-8">
+					<div class="row g-xl-6 align-items-center">
+						<div class="col-lg-6">
+							<!-- Card Image -->
+							<div class="card-img-scale-wrapper rounded-2 h-100">
+								<img src="assets/images/portfolio/list/02.jpg" class="img-scale" alt="portfolio-img">
+							</div>
+						</div>
+
+						<!-- Content -->
+						<div class="col-lg-6">
+							<!-- Card body -->
+							<div class="card-body h-100 px-0 p-xl-5">
+								<!-- Client -->
+								<img src="assets/images/client/04.svg" class="h-30px mb-3 mb-lg-4" alt="Client-img">
+								<!-- Title -->
+								<h4 class="card-title">Bio Cosmetics</h4>
+								<p class="card-text mb-3 mb-lg-4">The most powerful software & app landing page for any
+									kind of app and software marketing business.</p>
+								<!-- List -->
+								<div class="d-flex gap-2 gap-sm-3 gap-lg-1 flex-lg-column flex-wrap mb-3 mb-lg-4">
+									<div><i class="fa-solid fa-circle fa-2xs text-primary me-2"></i>2022</div>
+									<span>Branding</span>
+									<span>Packaging</span>
+									<span>UI/UX design</span>
+								</div>
+								<!-- Button -->
+								<a href="#" class="text-primary-hover stretched-link heading-color mb-0">View case
+									study<i class="fa-solid fa-arrow-right-long fa-fw ms-2"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio item END -->
+
+				<!-- Portfolio item START -->
+				<div class="card card-img-scale bg-transparent overflow-hidden mb-6 mb-xl-8">
+					<div class="row g-xl-6 align-items-center">
+						<!-- Content -->
+						<div class="col-lg-6 order-2">
+							<!-- Card body -->
+							<div class="card-body text-lg-end h-100 px-0 p-xl-5">
+								<!-- Client -->
+								<img src="assets/images/client/02.svg" class="h-30px mb-3 mb-lg-4" alt="Client-img">
+								<!-- Title -->
+								<h4 class="card-title">Website Optimization for TechWave</h4>
+								<p class="card-text mb-3 mb-lg-4">The most powerful software & app landing page for any
+									kind of app and software marketing business.</p>
+								<!-- List -->
+								<div
+									class="d-flex justify-content-lg-end gap-2 gap-sm-3 gap-lg-1 flex-lg-column flex-wrap mb-3 mb-lg-4">
+									<div><i class="fa-solid fa-circle fa-2xs text-primary me-2"></i>2021</div>
+									<span>Branding</span>
+									<span>Packaging</span>
+									<span>UI/UX design</span>
+								</div>
+								<!-- Button -->
+								<a href="#" class="text-primary-hover stretched-link heading-color mb-0">View case
+									study<i class="fa-solid fa-arrow-right-long fa-fw ms-2"></i></a>
+							</div>
+						</div>
+
+						<div class="col-lg-6 order-1 order-lg-2">
+							<div class="card-img-scale-wrapper rounded-2 overflow-hidden h-100">
+								<!-- Card Image -->
+								<img src="assets/images/portfolio/list/01.jpg" class="img-scale" alt="portfolio-img">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio item END -->
+
+				<!-- Portfolio item START -->
+				<div class="card card-img-scale bg-transparent overflow-hidden mb-6 mb-xl-8">
+					<div class="row g-xl-6 align-items-center">
+						<div class="col-lg-6">
+							<!-- Card Image -->
+							<div class="card-img-scale-wrapper rounded-2 h-100">
+								<img src="assets/images/portfolio/list/03.jpg" class="img-scale" alt="portfolio-img">
+							</div>
+						</div>
+
+						<!-- Content -->
+						<div class="col-lg-6">
+							<!-- Card body -->
+							<div class="card-body h-100 px-0 p-xl-5">
+								<!-- Client -->
+								<img src="assets/images/client/01.svg" class="h-30px mb-3 mb-lg-4" alt="Client-img">
+								<!-- Title -->
+								<h4 class="card-title">Cherry Studio</h4>
+								<p class="card-text mb-3 mb-lg-4">The most powerful software & app landing page for any
+									kind of app and software marketing business.</p>
+								<!-- List -->
+								<div class="d-flex gap-2 gap-sm-3 gap-lg-1 flex-lg-column flex-wrap mb-3 mb-lg-4">
+									<div><i class="fa-solid fa-circle fa-2xs text-primary me-2"></i>2020</div>
+									<span>Branding</span>
+									<span>Packaging</span>
+									<span>Development</span>
+								</div>
+								<!-- Button -->
+								<a href="#" class="text-primary-hover stretched-link heading-color mb-0">View case
+									study<i class="fa-solid fa-arrow-right-long fa-fw ms-2"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio item END -->
+
+				<!-- Portfolio item START -->
+				<div class="card card-img-scale bg-transparent overflow-hidden mb-6 mb-xl-8">
+					<div class="row g-xl-6 align-items-center">
+						<!-- Content -->
+						<div class="col-lg-6 order-2">
+							<!-- Card body -->
+							<div class="card-body text-lg-end h-100 px-0 p-xl-5">
+								<!-- Client -->
+								<img src="assets/images/client/05.svg" class="h-30px mb-3 mb-lg-4" alt="Client-img">
+								<!-- Title -->
+								<h4 class="card-title">Transforming Ideas into Reality</h4>
+								<p class="card-text mb-3 mb-lg-4">The most powerful software & app landing page for any
+									kind of app and software marketing business.</p>
+								<!-- List -->
+								<div
+									class="d-flex justify-content-lg-end gap-2 gap-sm-3 gap-lg-1 flex-lg-column flex-wrap mb-3 mb-lg-4">
+									<div><i class="fa-solid fa-circle fa-2xs text-primary me-2"></i>2019</div>
+									<span>Graphics</span>
+									<span>Development</span>
+									<span>UI/UX design</span>
+								</div>
+								<!-- Button -->
+								<a href="#" class="text-primary-hover stretched-link heading-color mb-0">View case
+									study<i class="fa-solid fa-arrow-right-long fa-fw ms-2"></i></a>
+							</div>
+						</div>
+
+						<div class="col-lg-6 order-1 order-lg-2">
+							<div class="card-img-scale-wrapper rounded-2 overflow-hidden h-100">
+								<!-- Card Image -->
+								<img src="assets/images/portfolio/list/04.jpg" class="img-scale" alt="portfolio-img">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Portfolio item END -->
+
+				<!-- Pagination START -->
+				<!--div class="row mt-7">
+					<div class="col-12">
+						<ul
+							class="pagination pagination-primary-soft list-unstyled d-flex justify-content-center flex-wrap mb-0">
+							<li class="page-item">
+								<a class="page-link" href="#"><i
+										class="fas fa-long-arrow-alt-left me-2 rtl-flip"></i>Prev</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item"><a class="page-link" href="#">..</a></li>
+							<li class="page-item"><a class="page-link" href="#">22</a></li>
+							<li class="page-item"><a class="page-link" href="#">23</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#">Next<i
+										class="fas fa-long-arrow-alt-right ms-2 rtl-flip"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div -->
+				<!-- Pagination END -->
+			</div>
+		</section>
+		<!-- =======================
+Main hero END -->
+
+		<!-- =======================
+CTA START -->
+		<section class="position-relative z-index-2 py-0 mb-n7">
+			<div class="container position-relative">
+				<div class="bg-primary rounded position-relative overflow-hidden p-4 p-sm-5">
+
+					<!-- SVG decoration -->
+					<figure class="position-absolute top-0 start-0 ms-n8">
+						<svg width="371" height="354" viewBox="0 0 371 354" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<ellipse cx="172.5" cy="176.5" rx="131.5" ry="125.5" fill="url(#paint0_linear_195_2)">
+							</ellipse>
+							<ellipse cx="185.5" cy="177" rx="185.5" ry="177" fill="url(#paint1_linear_195_2)"></ellipse>
+							<defs>
+								<linearGradient id="paint0_linear_195_2" x1="172.5" y1="51" x2="172.5" y2="302"
+									gradientUnits="userSpaceOnUse">
+									<stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.5"></stop>
+									<stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+								</linearGradient>
+								<linearGradient id="paint1_linear_195_2" x1="185.5" y1="0" x2="185.5" y2="354"
+									gradientUnits="userSpaceOnUse">
+									<stop offset="0.0569271" stop-color="#D9D9D9" stop-opacity="0.2"></stop>
+									<stop offset="0.998202" stop-color="#D9D9D9" stop-opacity="0"></stop>
+								</linearGradient>
+							</defs>
+						</svg>
+					</figure>
+
+					<!-- Image decoration -->
+					<div class="position-absolute end-0 bottom-0 me-sm-5">
+						<img src="assets/images/elements/cta-vector.svg" class="h-200px" alt="vector-img">
+					</div>
+
+					<div class="row g-4 position-relative">
+						<!-- Title and inputs -->
+						<div class="col-lg-7 mx-auto text-center">
+							<!-- Title -->
+							<h2 class="text-white mb-4">Let's Work Together</h2>
+							<p class="text-white mb-4">I'll take the time to understand your vision and goals, and work
+								with you to develop a customized plan to help you succeed. </p>
+							<!-- Button -->
+							<div class="d-sm-flex justify-content-center align-items-center gap-2">
+								<a href="#" class="btn btn-dark"><i class="bi bi-telephone me-2" data-bs-toggle="modal"
+										data-bs-target="#contactModal"></i>Contact us</a>
+							</div>
+						</div>
+
+					</div> <!-- Row END -->
+				</div>
+			</div>
+		</section>
+		<!-- =======================
+CTA END -->
+
+	</main>
+	<!-- **************** MAIN CONTENT END **************** -->
+
+	<!-- =======================
+Footer START -->
+	<footer class="bg-dark position-relative overflow-hidden pt-6" data-bs-theme="dark">
+
+		<div class="container position-relative mt-5">
+			<!-- Widgets -->
+			<div class="row g-4">
+				<!-- Widget 1 START -->
+				<div class="col-xl-3 text-lg-center text-xl-start mb-4 mb-xl-0">
+					<!-- logo -->
+					<a href="index.html" class="fw-bold fs-4 text-white hover-underline-none ibm-plex-mono-text">
+						Smart Soft System
+					</a>
+				</div>
+				<!-- Widget 1 END -->
+
+				<!-- Widget START -->
+				<div class="col-6 col-md-4 col-lg-5 col-xl-4">
+					<h6 class="mb-2 mb-md-4">Quick links</h6>
+					<div class="row g-0">
+						<div class="col-lg-6">
+							<ul class="nav flex-column">
+								<li class="nav-item"><a class="nav-link pt-0" href="about-v2.html">About us</a></li>
+								<li class="nav-item cursor-pointer"><a class="nav-link" data-bs-toggle="modal"
+										data-bs-target="#contactModal">Contact us</a></li>
+								<li class="nav-item cursor-pointer"><a class="nav-link" data-bs-toggle="modal"
+										data-bs-target="#contactModal">Become a partner</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Widget END -->
+
+				<!-- Widget START -->
+				<div class="col-6 col-md-4 col-lg-3 col-xl-2">
+					<h6 class="mb-2 mb-md-4">Resources</h6>
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link" href="#">Impressum</a></li>
+						<li class="nav-item"><a class="nav-link pt-0" href="#">Datenschutz</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
+					</ul>
+				</div>
+				<!-- Widget END -->
+
+				<!-- Social buttons -->
+				<div class="col-6 col-md-4 col-lg-3 col-xl-2">
+					<h6 class="mb-2 mb-md-4">Follow on</h6>
+
+					<ul class="list-inline mb-0 mt-3">
+						<li class="list-inline-item"> <a class="btn btn-xs btn-icon bg-facebook" href="#"><i
+									class="fab fa-fw fa-facebook-f lh-base"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-xs btn-icon bg-instagram" href="#"><i
+									class="fab fa-fw fa-instagram lh-base"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-xs btn-icon bg-linkedin" href="#"><i
+									class="fab fa-fw fa-linkedin-in lh-base"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-xs btn-icon bg-youtube" href="#"><i
+									class="fab fa-fw fa-youtube lh-base"></i></a> </li>
+					</ul>
+				</div>
+
+				<!-- Divider -->
+				<!--hr class="opacity-1 my-5 my-sm-6"-->
+
+				<!-- Contact detail -->
+				<!--div class="row g-4 align-items-center">
+          <div class="col-xl-3 text-lg-center text-xl-start mb-4 mb-xl-0">
+            <h5 class="mb-1">Get in touch with us</h5>
+            <p class="mb-0">We look forward to hearing from you!</p>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+            <div class="position-relative d-flex align-items-center">
+              <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                <i class="bi bi-telephone heading-color"></i>
+              </div>
+              <div class="nav flex-column ps-3">
+                <div class="small text-body-secondary">Give us a call</div>
+                <p class="fw-semibold mt-1 mb-0"><a href="#"
+                    class="heading-color text-primary-hover stretched-link p-0">469-537-2410</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+            <div class="position-relative d-flex align-items-center">
+              <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                <i class="bi bi-envelope heading-color"></i>
+              </div>
+              <div class="nav flex-column ps-3">
+                <div class="small text-body-secondary">Send us an email</div>
+                <p class="fw-semibold mt-1 mb-0"><a href="#"
+                    class="heading-color text-primary-hover stretched-link p-0">example@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4 col-xl-3 d-flex justify-content-md-center">
+            <div class="position-relative d-flex align-items-center">
+              <div class="icon-lg bg-body rounded-circle flex-shrink-0">
+                <i class="bi bi-geo-alt heading-color"></i>
+              </div>
+              <div class="nav flex-column ps-3">
+                <div class="small text-body-secondary">Visit us in</div>
+                <p class="fw-semibold heading-color mt-1 mb-0">55/123 Norman street, Banking road</p>
+              </div>
+            </div>
+          </div>
+        </div-->
+
+				<!-- Divider -->
+				<hr class="opacity-1 mt-6 mb-0">
+
+				<!-- Bottom footer -->
+				<div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+					<div class="text-body mb-3 mb-md-0"> Copyrights ©2026 Smart Soft System. </div>
+				</div>
+
+			</div>
+	</footer>
+	<!-- =======================
+Footer END -->
+
+	<!-- Back to top -->
+	<div class="back-top"></div>
+
+	<!-- Contact Modal -->
+	<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="contactModalLabel">Contact Smart Soft System</h5>
+					<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="contactName" class="form-label">Name</label>
+							<input type="text" class="form-control" id="contactName" placeholder="Your Name">
+						</div>
+						<div class="mb-3">
+							<label for="contactEmail" class="form-label">Email address</label>
+							<input type="email" class="form-control" id="contactEmail" placeholder="name@company.com">
+						</div>
+						<div class="mb-3">
+							<label for="contactMessage" class="form-label">Message</label>
+							<textarea class="form-control" id="contactMessage" rows="3"
+								placeholder="Tell us about your project..."></textarea>
+						</div>
+						<div class="d-grid">
+							<button type="submit" class="btn btn-primary">Send Message</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap JS -->
+	<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Theme Functions -->
+	<script src="assets/js/functions.js"></script>
+
+</body>
+
+</html>

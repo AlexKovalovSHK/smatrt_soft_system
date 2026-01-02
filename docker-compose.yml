@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smart-soft-system
+    ports:
+      - "5051:80"
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    labels:
+      - "com.smart-soft-system.description=Smart Soft System Landing Page"

@@ -1,0 +1,80 @@
+:root {
+    --sss-bg-dark: #0A0A0B;
+    --sss-primary: #2563EB;
+    /* Electric Blue */
+    --sss-text-main: #FFFFFF;
+    --sss-text-muted: #A0A0A0;
+}
+
+body {
+    background-color: var(--sss-bg-dark) !important;
+    color: var(--sss-text-main) !important;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Force Dark Mode Overrides */
+.bg-light,
+.bg-body,
+.card {
+    background-color: #111214 !important;
+    /* Slightly lighter than bg-dark */
+    color: var(--sss-text-main) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-brand-item.light-mode-item {
+    display: none !important;
+}
+
+.navbar-brand-item.dark-mode-item {
+    display: block !important;
+}
+
+/* Glassmorphism */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Hero Section */
+.hero-title span.text-primary {
+    color: var(--sss-primary) !important;
+    text-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+}
+
+/* Modal Customization */
+.modal-content {
+    background-color: #161719;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.modal-header,
+.modal-footer {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control {
+    background-color: #0A0A0B;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.form-control:focus {
+    background-color: #0A0A0B;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+    border-color: var(--sss-primary);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Logo Font */
+.navbar-brand {
+    font-family: 'IBM Plex Mono', monospace !important;
+    letter-spacing: -0.02em;
+}
