@@ -1,0 +1,33 @@
+/* Mobile Modal Fix */
+/* Ensure modals work properly on touch devices */
+.modal {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for iOS Safari modal backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Ensure modal is above backdrop on mobile */
+.modal {
+    z-index: 1050;
+}
+
+/* Fix touch events on modal triggers */
+[data-bs-toggle="modal"] {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
