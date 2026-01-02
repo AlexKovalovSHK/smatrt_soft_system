@@ -74,7 +74,7 @@ body {
 }
 
 /* Logo Font */
-.navbar-brand {
+.ibm-plex-mono-text {
     font-family: 'IBM Plex Mono', monospace !important;
     letter-spacing: -0.02em;
 }
