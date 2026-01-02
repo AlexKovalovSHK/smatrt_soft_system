@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: smart-soft-system
+    container_name: smart_soft_system
     ports:
       - "5051:80"
     restart: unless-stopped
